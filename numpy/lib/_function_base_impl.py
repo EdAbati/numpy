@@ -532,7 +532,7 @@ def average(a, axis=None, weights=None, returned=False, *,
                     f"differ. Got {a.shape = } and {wgt.shape = }.")
             if wgt.ndim != 1:
                 raise TypeError(
-                    "1D weights expected when shapes of a and weights differ."
+                    "1D weights expected when shapes of a and weights differ. "
                     f"Got {a.shape = } and {wgt.shape = }.")
             if wgt.shape[0] != a.shape[axis]:
                 raise ValueError(
