@@ -529,13 +529,15 @@ def average(a, axis=None, weights=None, returned=False, *,
             if axis is None:
                 raise TypeError(
                     "Axis must be specified when shapes of a and weights "
-                    "differ.")
+                    f"differ. Got {a.shape = } and {wgt.shape = }.")
             if wgt.ndim != 1:
                 raise TypeError(
-                    "1D weights expected when shapes of a and weights differ.")
+                    "1D weights expected when shapes of a and weights differ."
+                    f"Got {a.shape = } and {wgt.shape = }.")
             if wgt.shape[0] != a.shape[axis]:
                 raise ValueError(
-                    "Length of weights not compatible with specified axis.")
+                    f"Length of weights ({wgt.shape=}) not compatible with "
+                    f"{a.shape=} and {axis=}.")
 
             # setup wgt to broadcast along axis
             wgt = np.broadcast_to(wgt, (a.ndim-1)*(1,) + wgt.shape)
